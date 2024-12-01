@@ -13,7 +13,7 @@ df = pd.read_csv("new_df_copy.csv")
 
 # '''PREDICTION'''
 # Load trained models
-random_forest_model = pickle.load(open("random_forest.pkl", "rb"))
+# random_forest_model = pickle.load(open("random_forest.pkl", "rb"))
 decision_tree_model = pickle.load(open("decision_tree.pkl", "rb"))
 
 # Load saved feature names
@@ -223,12 +223,13 @@ def main():
         }
 
         # Model selection
-        model_choice = st.selectbox("Select a Model", ["Random Forest", "Decision Tree"])
+        model_choice = st.selectbox("Select a Model", [ "Decision Tree"])
 
         # Predict button
         if st.button("Predict"):
             # Choose the model
-            model = random_forest_model if model_choice == "Random Forest" else decision_tree_model
+            # model = random_forest_model if model_choice == "Random Forest" else decision_tree_model
+            model = decision_tree_model
 
             # Perform prediction
             prediction = predict_app_success(model, input_data, feature_names)
